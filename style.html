@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个性主题</title>
+ 
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            background-image: linear-gradient(to bottom, #ffad33, #ff704d);
+            background-size: cover;
+            background-attachment: fixed;
+            text-align: center;
+            margin-top: 50px;
+            color: white;
+        }
+
+        h1 {
+            color: white;
+        }
+
+       .button {
+            display: inline-block;
+            padding: 20px 30px;
+            margin: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 15px;
+        }
+
+       .button:hover {
+            background-color: #0056b3;
+            border: 3px solid white;
+            padding: 20px 35px;
+        }
+
+      .img-style {
+            display: none;
+        }
+
+      .color-style {
+            display: none;
+        }
+
+      .fanbox {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: rgba(0, 0, 0, 0.5);
+            padding-right: 50px;
+            border-radius: 15px;
+        }
+
+      .fanbox p {
+            position: absolute;
+            top: -15px;
+            left: 40px;
+            font-size: 20px;
+        }
+
+      .fanbox:hover {
+            border: 3px solid white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fanbox" onclick="window.location.href='set.html'">
+        <img src="img/fan.svg" alt="" class="fan" style="width: 35px;">
+        <p>返回</p>
+    </div>
+    <h1>个性主题</h1>
+    <p>背景</p>
+    <a href="#" onclick="img()" class="button">图片</a>
+    <a href="#" onclick="color()" class="button">纯色</a>
+    <div class="img-style">
+        <p>图片样式</p>
+        <a href="#" class="button" onclick="saveStyle('img-clear')">清晰</a>
+        <a href="#" class="button" onclick="saveStyle('img-gaussian-blur')">高斯模糊</a>
+    </div>
+    <div class="color-style">
+        <p>颜色选择</p>
+        <a href="#" class="button" onclick="saveStyle('style-color-red')">红色</a>
+        <a href="#" class="button" onclick="saveStyle('style-color-yellow')">黄色</a>
+        <a href="#" class="button" onclick="saveStyle('style-color-green')">绿色</a>
+        <a href="#" class="button" onclick="saveStyle('style-color-blue')">蓝色</a>
+        <a href="#" class="button" onclick="saveStyle('style-color-orange')">橙色</a>
+        <a href="#" class="button" onclick="saveStyle('style-color-black')">黑色</a>
+        <a href="#" class="button" onclick="saveStyle('style-color-purple')">紫色</a>
+        <a href="#" class="button" onclick="saveStyle('style-color-white')">白色</a>
+        <p>颜色渐变</p>
+        <a href="#" class="button" onclick="saveStyle('style-color-gradient-orange')">橙色渐变</a>
+        <a href="#" class="button" onclick="saveStyle('style-color-gradient-green')">绿色渐变</a>
+    </div>
+</body>
+<script>
+    var imgstyle = document.querySelector('.img-style');
+    var colorstyle = document.querySelector('.color-style');
+
+    function img() {
+        imgstyle.style.display = 'block';
+        colorstyle.style.display = 'none';
+    }
+
+    function color() {
+        imgstyle.style.display = 'none';
+        colorstyle.style.display = 'block';
+    }
+
+    function saveStyle(styleKey) {
+        localStorage.setItem('selectedStyle', styleKey);
+    }
+</script>
+
+</html>

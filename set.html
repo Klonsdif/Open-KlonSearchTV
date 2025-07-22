@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+<style>
+body{
+  background: black;
+}
+    .st{
+    background: rgba(225, 225, 225, 0.4);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 70vh;
+  z-index: 9999;
+  text-align: center;
+  flex-wrap: wrap;
+  }
+  .st1s{
+    background: rgba(225, 225, 225, 0.4);
+    width: 90%;
+    padding: 25px;
+    border-radius: 25px;
+    margin-left: 18px;
+    margin-top: 8px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .st1s:hover{
+    animation: dj 0.5s ease;
+    background: rgba(0, 0, 0, 0.1);
+    height: 40px;
+  }
+  .st .imgsu{
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    width: 30px;
+  }
+  .st .imgsu:hover{
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 1px;
+  }
+</style>
+<body>
+<div class="st">
+  <h2 style="margin-top: 8px;">设置</h2>
+    <img src="img/fan.svg" alt="../img/fan.svg" style="" class="imgsu" onclick="window.location.href='search.html'">
+  <div class="st1s" onclick="window.location.href='about.html'">
+    <img src="img/grid.svg" alt="img/grid.svg" style="width: 40px;">
+     <span style="margin-left: 8px;margin-top: 0px">关于应用</span>
+  </div> 
+  <div class="st1s" onclick="window.location.href='style.html'">
+     <img src="img/i.svg" alt="img/i.svg" style="width: 40px;">
+     <span style="margin-left: 8px;margin-top: 0px">个性主题</span>
+  </div>
+    <div class="st1s" onclick="window.location.href='home.html'">
+     <img src="img/home.svg" alt="img/home.svg" style="width: 40px;">
+     <span style="margin-left: 8px;margin-top: 0px">默认主页</span>
+  </div>
+  </div>
+</body>
+
+</html>

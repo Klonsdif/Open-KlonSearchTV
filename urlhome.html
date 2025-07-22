@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+<style>
+body{
+   background: linear-gradient(to bottom, #000000, #2b2b2b); 
+   height: 100vh;
+   text-align: center;
+}
+  .btn-zy{
+    padding: 8px;
+    width: 100px;
+    border-radius: 8px;
+    border: 2px solid white;
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    position: fixed;
+    top: 6%;
+    left: 65px;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .btn-zy:hover{
+    background: white;
+    color: black;
+  }
+  .iframe{
+    width: 95%;
+height:85%;
+position: fixed;
+top: 55%;
+left: 50%;
+transform: translate(-50%, -50%);
+border-radius:10px;
+background: white;
+  }
+  .tc{
+    border: 2px solid black;
+    color: black;
+    background:white;
+    backdrop-filter: blur(15px);
+    padding: 5px;
+    position: fixed;
+    top: 4%;
+    left: 55px;
+  }
+  .tc:hover{
+    background: black;
+    color: white;
+  }
+  .iframe2{
+    width:100%;
+    height:100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius:3px;
+    background: white;
+  }
+</style>
+<body>
+<button class="btn-zy" onclick="window.location.href='home.html'">主页设置</button>
+<button class="btn-zy" style="left: 180px" onclick="webqp()">网页全屏</button>
+<iframe src="" frameborder="0" class="iframe"></iframe>
+<button class="btn-zy tc" style="display: none;">退出全屏</button>
+</body>
+<script>
+  var iframe = document.querySelector('.iframe');
+  var url = localStorage.getItem('homeurl');
+  var tc = document.querySelector('.tc');
+if (!(url.startsWith('http://') || url.startsWith('https://'))) {
+    iframe.src="https://"+url;
+
+  } else {
+      iframe.src=url;
+  }
+  function webqp(){
+    iframe.classList.remove('iframe');
+    iframe.classList.add('iframe2');
+    tc.style.display='block';
+  }
+  tc.onclick=function(){
+    tc.style.display='none';
+    iframe.classList.remove('iframe2');
+    iframe.classList.add('iframe');
+  }
+</script>
+</html>

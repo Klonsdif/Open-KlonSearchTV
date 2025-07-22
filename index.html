@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Klonsdif Search</title>
+  <style>
+    body {
+         background: linear-gradient(to bottom right, #1D2436, #2B2435);
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .title {
+      color: #ffffff;
+      font-size: 3em;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+      margin-left: 10px;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .appIcon{
+      width: 110px;
+      height:110px;
+      border-radius: 30px
+    
+    }
+        @keyframes fade {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    .qd{
+      display: flex;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="qd">
+  <img src="appIcon.png" alt="" class="appIcon title">
+  <h1 class="title">Klonsdif Search</h1>
+  </div>
+  <script>
+  var qd = document.querySelector('.qd');
+    setTimeout(function(){
+      window.location.href='search.html'
+
+    },1600)
+          setTimeout(function(){
+        qd.style.animation="fade 0.5s ease-in-out";
+      },1400)
+  </script>
+</body>
+</html>

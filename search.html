@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>tv搜索</title>
+  <script src="js/v.js"></script>
+  
+  <script src="js/style.js"></script>
+  <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+  * {
+    margin: 0;
+  }
+
+  @font-face {
+    font-family: a;
+    src: url("ttf/a.ttf");
+  }
+
+  body {
+    background: linear-gradient(to bottom right, #1D2436, #2B2435);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    text-align: center;
+    backdrop-filter: blur(20px);
+  }
+
+  .search {
+    margin-top: 50px;
+  }
+
+  .search h1 {
+    font-size: 2.4em;
+    color: lawngreen;
+    font-family: a;
+  }
+
+  .searchin {
+    width: 60%;
+    height: 50px;
+    border-radius: 50px;
+    border: none;
+    font-size: 20px;
+    background: rgba(225, 225, 225, 0.4);
+    color: white;
+    backdrop-filter: blur(5px);
+    transition: background 0.4s ease;
+    padding-left: 20px;
+    margin-top: 20px;
+  }
+
+  .btnsearch {
+    width: 55px;
+    height: 55px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.8);
+    font-size: 18px;
+    color: white;
+    background: rgba(225, 225, 225, 0.5);
+    transition: background 0.3s ease;
+    transition: color 0.3s ease;
+    margin-left: 10px;
+  }
+
+  .btnsearch:hover {
+    transform: scale(1.08);
+    color: black;
+    background: rgba(225, 225, 225, 1);
+  }
+
+  .searchin:hover {
+    color: black;
+    background: rgba(225, 225, 225, 1);
+    transform: scale(1.01);
+  }
+
+  iframe {
+    margin-top: 15px;
+    width: 95%;
+    height: 80vh;
+    border-radius: 10px;
+    opacity: 0.9;
+  }
+
+  #qh {
+    animation: ab 0.3s ease-in;
+    width: 85%;
+    padding: 25px;
+    padding-top: 30px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
+    position: absolute;
+    top: 250px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    display: none;
+    z-index: 9999;
+  }
+
+  #an {
+    color: white;
+    font-size: 20px;
+    background: #474747;
+    border: none;
+    border-radius: 5px;
+    margin-top: 8px;
+    width: 80%;
+    height: 35px;
+    backdrop-filter: blur(20px);
+    transition: background 0.3s ease;
+  }
+
+  #an:hover {
+    color: #262626;
+    border: 1px #ddd solid;
+    background: #EFEFEF;
+    transform: scale(1.01);
+  }
+
+  @keyframes b {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ab {
+    0% {
+      margin-top: 30px;
+      opacity: 0;
+    }
+    100% {
+    }
+  }
+
+  .b {
+    animation: b 0.7s ease;
+    width: 100%;
+    height: 135vh;
+    background: rgba(225, 225, 225, 0.15);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    display: none;
+    backdrop-filter: blur(105px);
+  }
+
+  .btn4 {
+    display: none;
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    margin-left: 2px;
+    position: absolute;
+    top: 1%;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+  }
+
+  .btn4:hover {
+    animation: b 0.5s;
+    background: white;
+    color: black;
+  }
+
+  .btntc {
+    display: none;
+    border: 2px solid black;
+    border-radius: 8px;
+    width: 70px;
+    height: 30px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px);
+    z-index: 99;
+    position: fixed;
+    top: 8px;
+    left: 8px;
+  }
+
+  .btntc:hover {
+    background: black;
+    color: white;
+  }
+
+  @keyframes dh {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .cd {
+    background: rgba(225, 225, 225, 0.4);
+    backdrop-filter: blur(15px);
+    width: 60px;
+    border-radius: 10px;
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    transition: padding 0.3s ease, padding 0.3s ease;
+  }
+
+  .cd:hover {
+    padding: 2px;
+    border: 2px solid white;
+  }
+
+  #newing {
+    width: 50%;
+    padding: 20px;
+    display: none;
+    z-index: 9999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    border-radius: 15px;
+    text-align: center;
+    animation: kcdh 0.5s ease;
+    background-color: rgba(225, 225, 225, 1);
+    backdrop-filter: blur(10px);
+    color: black;
+  }
+
+  @media (orientation: portrait) {
+    /* 用于竖屏viewports */
+    #newing {
+      width: 90%;
+    }
+  }
+
+  #newing button {
+    width: 40%;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    background: black;
+    color: white;
+    margin-top: 8vh;
+    border: 1px solid white;
+    transition: transform 0.2s ease;
+  }
+
+  #newing button:hover {
+    transform: scale(1.05);
+    background: white;
+    color: black;
+  }
+
+  @keyframes dh {
+    0% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  #newing h1 {
+    margin-top: 10px;
+  }
+
+  #newing span {
+    font-size: 15px;
+    margin-top: 15px;
+  }
+
+  #newing .gv {
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    margin-left: 8px;
+  }
+
+  @keyframes kcdh {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .st1s span {
+    margin-top: 100px;
+  }
+
+  @keyframes dj {
+    0% {
+      background: rgba(225, 225, 225, 0.4);
+    }
+    100% {
+      background: rgba(0, 0, 0, 0.1);
+      height: 40px;
+    }
+  }
+
+  #xzgx {
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(225, 225, 225, 0.6);
+    padding: 20px;
+    width: 60%;
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    z-index: 9999;
+    display: none;
+  }
+
+  #xzgx h1 {
+    margin-top: 3px;
+    font-size: 25px;
+  }
+
+  #xzgx #xzgxa {
+    background: rgba(225, 225, 225, 0.2);
+    backdrop-filter: blur(8px);
+    width: 100vh;
+    margin: 0 auto;
+    padding-top: 8px;
+    padding-bottom: 13px;
+    border-radius: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  #xzgx #xzgxa:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .search-a {
+    margin-top: 20px;
+  }
+
+  .top {
+    width: 100%;
+    height: 80px;
+    text-align: left;
+  }
+
+  .top .url-input {
+    height: 40px;
+    border-radius: 50px;
+    margin-top: -5px;
+    margin-left: 5px;
+    background: rgba(225, 225, 225, 0.2);
+    border: none;
+    transition: background 0.3s ease;
+    width: 250px;
+  }
+
+  .top .url-input:hover {
+    background: white;
+    color: black;
+    transform: scale(1.02);
+  }
+
+  .top .top-btn {
+    color: white;
+    font-size: 25px;
+    margin-top: 8px;
+    margin-left: 8px;
+    background: rgba(225, 225, 225, 0.2);
+    padding: 10px;
+    border-radius: 100px;
+    transition: background 0.3s ease;
+  }
+
+  .top .top-btn:hover {
+    background: white;
+    color: black;
+    transform: scale(1.05);
+  }
+</style>
+<body id="body">
+  <div class="dh"></div>
+  <div class="top">
+    <input type="text" class="url-input" placeholder="输入网址以搜索..." />
+    <span class="top-btn fa fa-undo" onclick="refresh()"></span>
+
+    <span class="top-btn fa fa-cog" onclick="window.location.href='set.html'"></span>
+  </div>
+
+  <div class="search">
+    <h1>search</h1>
+    <div class="search-a">
+      <button class="btnsearch" onclick="ss()">百度</button>
+      <input type="text" class="searchin" placeholder="搜索或输入网址..." id="searchin">
+      <button onclick="search(); isSrcSet = '1'" class="btnsearch fa fa-search fa-2x" style="font-size: 25px"></button>
+    </div>
+  </div>
+
+  <iframe id="iframe" src="" frameborder="0"></iframe>
+  <div id="qh">
+    <button id="an" onclick="baidu()">百度</button><br>
+    <button id="an" onclick="bing()">必应</button><br>
+    <button id="an" onclick="so()">360</button><br>
+    <button id="an" onclick="dog()">搜狗</button></br>
+    <button id="an" onclick="ai()">秘塔AI搜索</button></br>
+    <button id="an" onclick="ai360()">360AI搜索</button>
+    <button id="an" onclick="bilibili()">bilibili</button>
+    <button id="an" onclick="openweb()">打开网址</button></br>
+
+  </div>
+  <div class="b"></div>
+  <button onclick="qp()" class="btn4" id="btn4">全屏</button>
+  <button class="btntc" id="gb" onclick="tc()">退出</button>
+
+  <div id="shadow" style="width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.4); z-index: 9999; position: absolute; top: 0; left: 0; display: none"></div>
+
+
+  <script src="js/style.js"></script>
+  <script>
+    var isSrcSet;
+    var homezy = localStorage.getItem('homezy');
+    if (homezy == 'mr') {
+
+    } else if (homezy == 'url') {
+      window.location.href = 'urlhome.html'
+    }
+
+    var shadow = document.getElementById('shadow');
+  
+
+    var sbt = document.querySelector('.st');
+    function imgs() {
+      sbt.style.display = 'none';
+      b.style.display = 'none';
+    }
+    var b = document.querySelector('.b');
+    let btn = document.querySelector('.btnsearch');
+    let i = "https://www.baidu.com/s?wd=";
+    var iframe = document.querySelector('iframe');
+
+    function ss() {
+      qh.style.display = 'block';
+      b.style.display = 'block';
+    }
+
+    function baidu() {
+      i = 'https://www.baidu.com/s?wd=';
+      btn.textContent = '百度';
+      qh.style.display = 'none';
+      b.style.display = 'none';
+    }
+
+    function bing() {
+      i = 'https://cn.bing.com/search?q=';
+      btn.textContent = '必应';
+      qh.style.display = 'none';
+      b.style.display = 'none';
+    }
+
+    function so() {
+      i = 'https://www.so.com/s?q=';
+      btn.textContent = '360';
+      qh.style.display = 'none';
+      b.style.display = 'none';
+    }
+
+    function dog() {
+      i = 'https://wap.sogou.com/web/searchList.jsp?from=index&pid=sogou-waps-7880d7226e872b77&t=1717162452185&s_t=1717162467475&s_from=index&pg=webSearchList&inter_index=&keyword=';
+      btn.textContent = '搜狗';
+      qh.style.display = 'none';
+      b.style.display = 'none';
+    }
+
+    function openweb() {
+      i = '';
+      btn.textContent = '网址';
+      qh.style.display = 'none';
+      b.style.display = 'none';
+      searchin.value = `https://`;
+    }
+
+    function ai() {
+      i = 'https://metaso.cn/?q=';
+      btn.textContent = '秘塔';
+      qh.style.display = 'none';
+      b.style.display = 'none';
+    }
+
+    function ai360() {
+      i = 'https://www.sou.com/?q=';
+      btn.textContent = '360AI';
+      qh.style.display = 'none';
+      b.style.display = 'none';
+    }
+
+    function bilibili() {
+      i = 'https://search.bilibili.com/all?keyword=';
+      btn.textContent = 'bilibili';
+      qh.style.display = 'none';
+      b.style.display = 'none';
+    }
+
+    function qp() {
+      iframe.style = `
+        width:100%;
+        height:105vh;
+        position: fixed;
+        top: 250px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity:1;
+        background:rgba(0,0,0,0.5);
+        backdrop-filter: blur(10px);
+      `
+      gb.style.display = 'block';
+      btn4.style.display = 'none';
+    }
+
+    function tc() {
+      iframe.style = '';
+      gb.style.display = 'none';
+      btn4.style.display = 'block';
+    }
+
+    function refresh() {
+      if (!isSrcSet || iframe.src === '') {
+        // 刷新 iframe
+        iframe.src = '';
+        iframe.src = iframe.src;
+      } else {
+        const currentSrc = iframe.src;
+        iframe.src = '';
+        iframe.src = currentSrc;
+      }
+    }
+
+    function search() {
+      iframe.src = i + searchin.value;
+      btn4.style.display = 'block';
+    }
+  </script>
+</body>
+
+</html>
